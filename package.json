@@ -1,0 +1,63 @@
+{
+ "name": "dozzle",
+ "version": "4.0.2",
+ "description": "Realtime log viewer for docker containers. ",
+ "homepage": "https://github.com/amir20/dozzle#readme",
+ "bugs": {
+  "url": "https://github.com/amir20/dozzle/issues"
+ },
+ "repository": {
+  "type": "git",
+  "url": "git+https://github.com/amir20/dozzle.git"
+ },
+ "license": "ISC",
+ "author": "Amir Raminfar <findamir@gmail.com>",
+ "scripts": {
+  "watch:assets": "vite --open",
+  "watch:server": "LIVE_FS=true DOZZLE_ADDR=:3100 reflex -c .reflex",
+  "dev": "make fake_assets && npm-run-all -p watch:assets watch:server",
+  "build": "vite build",
+  "release": "release-it",
+  "test": "TZ=UTC vitest"
+ },
+ "dependencies": {
+  "@intlify/vite-plugin-vue-i18n": "^6.0.1",
+  "@vitejs/plugin-vue": "3.1.0",
+  "@vue/compiler-sfc": "^3.2.39",
+  "@vueuse/core": "^9.2.0",
+  "@vueuse/router": "^9.2.0",
+  "typescript": "^4.8.3",
+  "unplugin-auto-import": "^0.11.2",
+  "unplugin-icons": "^0.14.9",
+  "unplugin-vue-components": "^0.22.4",
+  "vite": "3.1.0",
+  "vite-plugin-pages": "^0.26.0",
+  "vue": "^3.2.39",
+  "vue-i18n": "^9.2.2",
+  "vue-router": "^4.1.5"
+ },
+ "devDependencies": {
+  "@types/node": "^18.7.16",
+  "@types/semver": "^7.3.12",
+  "jsdom": "^20.0.0",
+  "lint-staged": "^13.0.3",
+  "prettier": "^2.7.1",
+  "ts-node": "^10.9.1",
+  "vitest": "^0.23.1",
+  "vue-tsc": "^0.40.13"
+ },
+ "lint-staged": {
+  "*.{js,vue,css}": [
+   "prettier --write"
+  ]
+ },
+ "release-it": {
+  "github": {
+   "release": false,
+   "releaseNotes": "git log --pretty=format:\"* %s (%h)\" $(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-count=1))...HEAD~1"
+  },
+  "npm": {
+   "publish": false
+  }
+ }
+}

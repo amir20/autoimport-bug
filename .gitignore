@@ -1,0 +1,9 @@
+
+dist
+node_modules
+.cache
+static
+dozzle
+coverage
+.pnpm-debug.log
+.vscode
